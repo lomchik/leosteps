@@ -1,0 +1,7 @@
+{
+  "name": "leosteps",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
