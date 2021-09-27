@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Тест</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-text *ngIf="status === 'started'">
+    <p>У Вас гарно виходить, продовжуйте, залишилось: {{ timer  | amDateFormat : 'mm:ss' }}
+    </p>
+  </ion-text>
+  <div *ngIf="status === 'completed'">
+    <ion-text>
+      <p>Зафіксований підсумок: {{ steps }} кроків</p>
+      <p>Будь ласка, одразу після завершення тесту, виміряйте сатурацію та частоту серцевих скорочень, зафіксуйте результат та переходьте до заповнення даних</p>
+    </ion-text>
+    <ion-item>
+      <ion-checkbox [(ngModel)]="accepted"></ion-checkbox>
+      <ion-label >Ознайомлен(ий/а)</ion-label>
+    </ion-item>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" size="large" *ngIf="status !== 'completed'" [disabled]="status !== 'none'" (click)="start()">Старт</ion-button>
+  <ion-button expand="block" size="large" *ngIf="status === 'completed'" [disabled]="!accepted" (click)="next()">Далі</ion-button>
+</ion-footer>

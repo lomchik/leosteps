@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ідентифікація</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label class="ion-text-wrap" position="stacked">Будь ласка, введіть Ваш індивідуальний номер (у форматі 2 літери 2 цифри):</ion-label>
+    <ion-input  maxlength="4" minlenth="4" placeholder="ЛМ98" [(ngModel)]="id" ></ion-input>
+  </ion-item>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" size="large" [disabled]="!id" expand="block" size="large" (click)="next()">Далі</ion-button>
+</ion-footer>
