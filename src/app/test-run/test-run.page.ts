@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { merge } from 'rxjs';
 import { Subscription, timer } from 'rxjs';
 import { last, tap, takeWhile } from 'rxjs/operators';
 import { PedometerService } from '../services/pedometer.service';
+import { TimerService } from '../services/timer.service';
 
 @Component({
   selector: 'app-test-run',
@@ -13,13 +14,15 @@ import { PedometerService } from '../services/pedometer.service';
 export class TestRunPage implements OnInit {
   steps = 0;
   timer: number;
-  testTime = 6*1000;
+  testTime = 1*60*1000;
   startSubscription: Subscription;
-  status: 'started'|'none'|'completed' = 'none';
+  status: 'none'|'started'|'completed' = 'none';
+  accepted = false;
 
   constructor(
     private pedometer: PedometerService,
-    private nav: NavController
+    private nav: NavController,
+    private timerService: TimerService
   ) {
 
   }
@@ -30,7 +33,12 @@ export class TestRunPage implements OnInit {
     this.status = 'started';
     this.startSubscription = merge(
       this.startPedometer(),
-      this.startTimer().pipe(last(), tap(() => this.stop()))
+      this.timerService.startTimer(this.testTime)
+        .pipe(
+          tap((left) => { this.timer = left; }),
+          last(),
+          tap(() => this.stop())
+        )
     ).subscribe();
   }
 
@@ -53,12 +61,4 @@ export class TestRunPage implements OnInit {
     );
   }
 
-  private startTimer() {
-    this.timer = this.testTime;
-    return timer(1000, 1000)
-    .pipe(
-      tap(() => { this.timer -= 1000; }),
-      takeWhile(n => this.timer>0)
-    );
-  }
 }
