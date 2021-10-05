@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-radio-group value="biff" [(ngModel)]="value">
+    <ion-list-header>
+      <ion-label class="ion-text-wrap" position="stacked">Будь ласка, оцініть рівень задишки після тестування (обрати 1 з варіантів):</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>взагалі немає втоми/напруження</ion-label>
+      <ion-radio slot="start" value="1"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>ледь відчутна втома/важкість</ion-label>
+      <ion-radio slot="start" value="2"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>мінімальна втома/важкість</ion-label>
+      <ion-radio slot="start" value="3"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>певна втома/важкість</ion-label>
+      <ion-radio slot="start" value="4"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>помірна важкість/втома</ion-label>
+      <ion-radio slot="start" value="5"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>відчутне напруження</ion-label>
+      <ion-radio slot="start" value="6"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>дуже відчутне напруження</ion-label>
+      <ion-radio slot="start" value="7"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>сильне напруження</ion-label>
+      <ion-radio slot="start" value="8"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>надзвичайно сильне напруження</ion-label>
+      <ion-radio slot="start" value="9"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>максимальне напруження</ion-label>
+      <ion-radio slot="start" value="10"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" size="large" [disabled]="!value" (click)="next()">Далі</ion-button>
+</ion-footer>

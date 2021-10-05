@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-radio-group [(ngModel)]="value">
+    <ion-list-header>
+      <ion-label class="ion-text-wrap" position="stacked">Під час тестування Чи відчували Ви біль у спині, нозі або в іншому місці, що, на вашу думку, могло б погіршити результати тесту?</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Hi</ion-label>
+      <ion-radio slot="start" value="no"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Так</ion-label>
+      <ion-radio slot="start" value="yes"></ion-radio>
+    </ion-item>
+    <ion-list *ngIf="value === 'yes'">
+      <ion-item>
+        <ion-label>Спина</ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="back"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Нога</ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="leg"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Інше:</ion-label>
+        <ion-input [(ngModel)]="other" placeholder="Поле для введення"></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-radio-group>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" size="large" [disabled]="!value" (click)="next()">Далі</ion-button>
+</ion-footer>

@@ -30,6 +30,30 @@ const routes: Routes = [
   {
     path: 'test-run',
     loadChildren: () => import('./test-run/test-run.module').then( m => m.TestRunPageModule)
+  },
+  {
+    path: 'enter-heart-rate-after',
+    loadChildren: () => import('./enter-heart-rate-after/enter-heart-rate-after.module').then( m => m.EnterHeartRateAfterPageModule)
+  },
+  {
+    path: 'enter-saturation-after',
+    loadChildren: () => import('./enter-saturation-after/enter-saturation-after.module').then( m => m.EnterSaturationAfterPageModule)
+  },
+  {
+    path: 'breath-after-test',
+    loadChildren: () => import('./breath-after-test/breath-after-test.module').then( m => m.BreathAfterTestPageModule)
+  },
+  {
+    path: 'tension-after-test',
+    loadChildren: () => import('./tension-after-test/tension-after-test.module').then( m => m.TensionAfterTestPageModule)
+  },
+  {
+    path: 'test-feeling',
+    loadChildren: () => import('./test-feeling/test-feeling.module').then( m => m.TestFeelingPageModule)
+  },
+  {
+    path: 'results',
+    loadChildren: () => import('./results/results.module').then( m => m.ResultsPageModule)
   }
 ];
 @NgModule({

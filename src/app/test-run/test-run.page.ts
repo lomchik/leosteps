@@ -14,7 +14,7 @@ import { TimerService } from '../services/timer.service';
 export class TestRunPage implements OnInit {
   steps = 0;
   timer: number;
-  testTime = 1*60*1000;
+  testTime = 5*1000;
   startSubscription: Subscription;
   status: 'none'|'started'|'completed' = 'none';
   accepted = false;
@@ -43,6 +43,7 @@ export class TestRunPage implements OnInit {
   }
 
   stop() {
+    (navigator as any).notification?.beep(1);
     this.status = 'completed';
     this.pedometer.stop();
     this.startSubscription.unsubscribe();
@@ -50,7 +51,7 @@ export class TestRunPage implements OnInit {
 
   next() {
     localStorage.setItem('steps', this.steps.toString());
-    this.nav.navigateForward('steps');
+    this.nav.navigateForward('enter-heart-rate-after');
   }
 
   private startPedometer() {

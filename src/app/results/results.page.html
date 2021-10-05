@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Результати</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item-divider>
+    <ion-label>
+        Перед тестуванням
+    </ion-label>
+  </ion-item-divider>
+  <ion-list>
+    <ion-item>
+      <ion-label>Пульс</ion-label>
+      <ion-note slot="end">{{ data['heartRate'] }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Сатурація</ion-label>
+      <ion-note slot="end">{{ data['saturation'] }}%</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Віддишка</ion-label>
+      <ion-note slot="end">{{ data['breathBeforeTest'] }}/10</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Втома</ion-label>
+      <ion-note slot="end">{{ data['tensionBeforeTest'] }}/10</ion-note>
+    </ion-item>
+    <ion-item-divider>
+      <ion-label>
+          Tестування
+      </ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Кроків</ion-label>
+      <ion-note slot="end">{{ data['steps'] }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Біль</ion-label>
+      <ion-note slot="end">{{ data['testPain'] }}</ion-note>
+    </ion-item>
+    <ion-item-divider>
+      <ion-label>
+          Після тестування
+      </ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Пульс</ion-label>
+      <ion-note slot="end">{{ data['heartRateAfter'] }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Сатурація</ion-label>
+      <ion-note slot="end">{{ data['saturationAfter'] }}%</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Віддишка</ion-label>
+      <ion-note slot="end">{{ data['breathAfterTest'] }}/10</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Втома</ion-label>
+      <ion-note slot="end">{{ data['tensionAfterTest'] }}/10</ion-note>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" size="large" (click)="send()">Відправити</ion-button>
+</ion-footer>

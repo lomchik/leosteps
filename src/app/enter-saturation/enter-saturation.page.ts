@@ -19,7 +19,7 @@ export class EnterSaturationPage implements OnInit {
   }
 
   next() {
-    localStorage.setItem('heartRate', this.value.toString());
+    localStorage.setItem('saturation', this.value.toString());
     this.navigation.navigateForward(['/breath-before-test']);
   }
 }

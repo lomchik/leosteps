@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label class="ion-text-wrap" position="stacked">Введіть рівень насичення крові киснем (сатурації) одразу після тестування:</ion-label>
+    <ion-input placeholder="95" type="number" max="100" min="0" [(ngModel)]="value"></ion-input>
+  </ion-item>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" size="large" [disabled]="!value"  (click)="next()">Далі</ion-button>
+</ion-footer>

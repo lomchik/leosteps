@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-radio-group value="biff" [(ngModel)]="value">
+    <ion-list-header>
+      <ion-label class="ion-text-wrap" position="stacked">Будь ласка, оцініть рівень задишки після тестування (обрати 1 з варіантів):</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>взагалі немає</ion-label>
+      <ion-radio slot="start" value="1"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>дуже слабка</ion-label>
+      <ion-radio slot="start" value="2"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>слабка</ion-label>
+      <ion-radio slot="start" value="3"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>помірна</ion-label>
+      <ion-radio slot="start" value="4"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>є певне утруднення дихання</ion-label>
+      <ion-radio slot="start" value="5"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>відчувається, що дихати важко</ion-label>
+      <ion-radio slot="start" value="6"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>дихати дуже важко</ion-label>
+      <ion-radio slot="start" value="7"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>сильна задишка</ion-label>
+      <ion-radio slot="start" value="8"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>дуже сильна задишка</ion-label>
+      <ion-radio slot="start" value="9"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>надзвичайно сильна задишка</ion-label>
+      <ion-radio slot="start" value="10"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" size="large" [disabled]="!value" (click)="next()">Далі</ion-button>
+</ion-footer>

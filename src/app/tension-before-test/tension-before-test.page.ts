@@ -18,7 +18,7 @@ export class TensionBeforeTestPage implements OnInit {
   }
 
   next() {
-    localStorage.setItem('breathBeforeTest', this.value);
+    localStorage.setItem('tensionBeforeTest', this.value);
     this.navigation.navigateForward(['/test-run']);
   }
 }

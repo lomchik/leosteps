@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label class="ion-text-wrap" position="stacked">Будь ласка, введіть Вашу частоту серцевих скорочень одразу після тестування (кількість ударів за хвилину)</ion-label>
+    <ion-input placeholder="68" type="number" min="0" [(ngModel)]="rate"></ion-input>
+  </ion-item>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" size="large"  [disabled]="!rate" (click)="next()">Далі</ion-button>
+</ion-footer>
