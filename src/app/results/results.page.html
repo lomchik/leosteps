@@ -69,4 +69,5 @@
 
 <ion-footer class="ion-padding">
   <ion-button expand="block" size="large" (click)="send()">Відправити</ion-button>
+  <ion-button *ngIf="shared" expand="block" size="large" (click)="begin()">На початок</ion-button>
 </ion-footer>
