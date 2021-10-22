@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
-import { merge } from 'rxjs';
+import { merge, of } from 'rxjs';
 import { Subscription, timer } from 'rxjs';
-import { last, tap, takeWhile } from 'rxjs/operators';
+import { last, tap, takeWhile, catchError } from 'rxjs/operators';
 import { PedometerService } from '../services/pedometer.service';
 import { TimerService } from '../services/timer.service';
 
@@ -14,7 +14,7 @@ import { TimerService } from '../services/timer.service';
 export class TestRunPage implements OnInit {
   steps = 0;
   timer: number;
-  testTime = 5*1000;
+  testTime = 6*60*1000;
   startSubscription: Subscription;
   status: 'none'|'started'|'completed' = 'none';
   accepted = false;
@@ -26,7 +26,11 @@ export class TestRunPage implements OnInit {
   ) {
 
   }
-  ngOnInit() {
+  async ngOnInit() {
+    try {
+      await this.pedometer.start().toPromise();
+      await this.pedometer.stop();
+    } catch (err){}
   }
 
   start() {
@@ -58,7 +62,12 @@ export class TestRunPage implements OnInit {
     this.steps = 0;
     return this.pedometer.start()
     .pipe(
-      tap((data) => this.steps = data.numberOfSteps)
+      tap(data => console.log(data)),
+      tap((data) => this.steps = data),
+      catchError(err => {
+        alert(JSON.stringify(err));
+        return of();
+      })
     );
   }
 

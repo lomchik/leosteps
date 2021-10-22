@@ -1,27 +1,46 @@
 import { Injectable } from '@angular/core';
 import { IPedometerData, Pedometer } from '@ionic-native/pedometer/ngx';
 import { Platform } from '@ionic/angular';
-import { of } from 'rxjs';
+import { from, of, timer } from 'rxjs';
+import { Stepcounter } from '@ionic-native/stepcounter/ngx';
+import { last, map, switchMap, tap } from 'rxjs/operators';
 
 
 @Injectable({providedIn: 'root'})
 export class PedometerService {
   private pedometer: Pedometer;
 
-  constructor(private platform: Platform) {
+  constructor(private platform: Platform, private stepcounter: Stepcounter) {
     this.pedometer = new Pedometer();
     console.log(this.isAvailable());
   }
 
   async isAvailable() {
-    return await this.pedometer.isStepCountingAvailable();
+    return await this.stepcounter.deviceCanCountSteps();
+  }
+
+  _start() {
+    return from(this.stepcounter.start(0))
+    .pipe(
+      switchMap(() => timer(0, 1000).pipe(
+        switchMap(() => this.stepcounter.getStepCount())
+      )),
+      tap(() => console.log(this.stepcounter.getHistory()))
+    );
+  }
+
+  _stop() {
+    this.stepcounter.stop();
   }
 
   start() {
     if (this.platform.is('cordova')) {
-      return this.pedometer.startPedometerUpdates();
+      return this.pedometer.startPedometerUpdates()
+      .pipe(
+        map(data => data.numberOfSteps)
+      );
     }
-    return of({numberOfSteps: 23} as IPedometerData);
+    return of(23);
   }
 
   stop() {
